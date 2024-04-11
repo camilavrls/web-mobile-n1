@@ -1,8 +1,13 @@
-.menu{
+.menu {
     border-top-right-radius: 50px;
     width: 20vw;
     height: 100vh;
     background-color: #201261;
     margin-left: 0px;
-    color: white; 
-  }
+    color: white;
+}
+
+a {
+    text-decoration: none; 
+    color: inherit;
+}
