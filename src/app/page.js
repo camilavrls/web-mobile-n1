@@ -1,27 +1,7 @@
 import { Toolbar, IconButton, TextField } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Link from "next/link";
 
-export default function App() {
-  return (
-    <div className="container">
-      <Menu></Menu>
-      <Home></Home>
-    </div>
-  );
-}
-
-function Menu() {
-  return (
-    <div className="menu">
-      <nav>
-        <Link href="/">Home</Link>
-      </nav>
-    </div>
-  );
-}
-
-function Home() {
+export default function Home() {
   return (
     <section className="Principal">
       <div className="head">
@@ -30,7 +10,7 @@ function Home() {
             <MenuIcon />
           </IconButton>
           <SearchBar />
-          <Botao nome="Conheç mais sobre a gente" />
+          <Botao nome="Conheça mais sobre a gente" />
         </Toolbar>
       </div>
 
