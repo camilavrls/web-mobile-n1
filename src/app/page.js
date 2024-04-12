@@ -7,20 +7,12 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import TextField from "@mui/material/TextField";
 
-function Botao1(props) {
-  return <button>Conheça Mais sobre a gente</button>;
-}
-
-function Botao2(props2) {
-  return <button>Conheça Outras Histórias</button>;
-}
-
-function Botao3(props3) {
-  return <button>Conheça Outras Histórias</button>;
-}
-
-function Botao4(props3) {
-  return <button>Participe da Nossa comunidade</button>;
+function Botao(props) {
+  return (
+    <button>
+      {props.nome}
+    </button>
+  );
 }
 
 function SearchBar() {
@@ -45,7 +37,7 @@ export default function App() {
         <IconButton>
           <MenuIcon />
           <SearchBar />
-          <Botao4 />
+          <Botao nome="Participe da nossa comunidade"/>
         </IconButton>
       </div>
 
@@ -66,7 +58,7 @@ export default function App() {
           inspirar as gerações futuras.
         </p>
 
-        <Botao1 className="button1"/>
+        <Botao nome="Conheça mais sobre a gente"/>
       </div>
 
       <div className="div2">
@@ -84,7 +76,7 @@ export default function App() {
           sepultada por seus próprios méritos no Panteão de Paris.
         </p>
 
-        <Botao2 className="button2"/>
+        <Botao nome="Conheça mais histórias"/>
       </div>
 
       <div className="div3">
@@ -100,7 +92,7 @@ export default function App() {
           crescimento profissional.
         </p>
 
-        <Botao3 className="button3"/>
+        <Botao nome="Encontre oportunidades"/>
       </div>
       <footer>
         <div className="Foot">Feito por: Maria Clara, Camila e Isabele.</div>
