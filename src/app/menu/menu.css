@@ -5,9 +5,30 @@
     background-color: #201261;
     margin-left: 0px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 a {
     text-decoration: none; 
     color: inherit;
 }
+
+img{
+    margin: 16px;
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 768px) {
+    .menu {
+      width: 100%; /* Make menu full width on small screens */
+      height: auto; /* Remove fixed height */
+      flex-direction: row; /* Change layout to horizontal */
+      align-items: flex-start; /* Align items at the top */
+    }
+    
+    nav {
+    }
+  }
