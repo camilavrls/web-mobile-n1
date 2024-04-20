@@ -1,0 +1,24 @@
+.container {
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.content {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.text {
+    flex-grow: 1; 
+}
+
+.texto{
+    color: #201261;
+}
+
+.text h1 {
+    color: #EF6565;
+    font-weight: normal;
+    margin-bottom: 10px; 
+}
