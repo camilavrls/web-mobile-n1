@@ -9,7 +9,6 @@ export default function Menu() {
                 <Link href="/">Home</Link><br />
                 <Link href="/quiz">Quiz</Link><br />
                 <Link href="/inspiracoes">Inspirações</Link><br />
-                <Link href="/oportunidades">Oportunidades</Link><br />
                 <Link href="/sobrenos">Sobre Nós</Link>
             </nav>
         </div>
