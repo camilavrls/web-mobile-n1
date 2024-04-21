@@ -5,7 +5,7 @@ import Header from "./shared/header/header";
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <div className="container">
+      <div className="container-home">
         <Header/>
         {children}
       </div>

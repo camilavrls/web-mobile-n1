@@ -2,10 +2,10 @@
 
 html {
   background-image: linear-gradient(to top, #DAD5F4, #FFE5E7);
+  font-family: "Livvic", sans-serif;
 }
 
-.container {
+.container-home{
   display: flex;
   flex-direction: column;
-  font-family: "Livvic", sans-serif;
 }

@@ -1,5 +1,12 @@
 .container{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.logo{
+    max-width: 70px;
+    margin-right: 16px;
+}
 
