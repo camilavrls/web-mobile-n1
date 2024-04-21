@@ -11,7 +11,7 @@ export default function Banner(props) {
                         <div className="text">
                             <h1>{props.titulo}</h1>
                             <p className="texto">{props.texto}</p>
-                            <Botao nome={props.nomeBotao} class="azul" />
+                            <Botao nome={props.nomeBotao} class="azul" redirect={props.redirect}/>
                         </div>
                     </>
                 ) : (
@@ -19,7 +19,7 @@ export default function Banner(props) {
                         <div className="text">
                             <h1>{props.titulo}</h1>
                             <p className="texto">{props.texto}</p>
-                            <Botao nome={props.nomeBotao} class="azul" />
+                            <Botao nome={props.nomeBotao} class="azul" redirect={props.redirect}/>
                         </div>
                         <img src={props.img} alt="Banner" />
                     </>
