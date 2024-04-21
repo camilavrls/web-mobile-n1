@@ -3,6 +3,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .logo{
