@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./shared/header/header";
+import TabBar from "./shared/tabBar/tabBar";
 
 export default function RootLayout({ children }) {
   return (
@@ -8,6 +9,7 @@ export default function RootLayout({ children }) {
       <div className="container-home">
         <Header/>
         {children}
+        <TabBar/>
       </div>
     </html>
   );

@@ -2,10 +2,17 @@
 
 html {
   background-image: linear-gradient(to top, #DAD5F4, #FFE5E7);
+  height: 100%;
   font-family: "Livvic", sans-serif;
 }
 
 .container-home{
   display: flex;
   flex-direction: column;
+}
+
+a{
+  text-decoration: none;
+  color: #201261;
+  margin: 8px;
 }

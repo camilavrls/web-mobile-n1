@@ -1,23 +1,24 @@
-.container {
-    padding: 20px;
+.container-banner{
+    padding: 8px;
 }
 
 .content {
-    display: flex;
+    display: flex; 
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
 }
 
-.text {
-    flex-grow: 1;
-}
-
-.texto {
+.texto{
     color: #201261;
+    margin: 8px;
+}
+
+.text{
+    text-align: center;
 }
 
 .text h1 {
     color: #EF6565;
     font-weight: normal;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
 }
