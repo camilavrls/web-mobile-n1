@@ -15,6 +15,7 @@ export default function Bilhetes() {
 
     const fetchNotes = async () => {
         try {
+            console.log("Fetching notes...");
             const response = await axios.get("http://localhost:3001/notes");
             console.log("Fetched notes:", response.data);
             setNotes(response.data);
@@ -25,6 +26,7 @@ export default function Bilhetes() {
 
     const addNote = async () => {
         try {
+            console.log("Adding note:", newNote);
             const response = await axios.post("http://localhost:3001/notes", { note: newNote });
             console.log("Added note:", response.data);
             setNotes([...notes, response.data]);
@@ -36,8 +38,10 @@ export default function Bilhetes() {
 
     const deleteNote = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/notes/${id}`);
+            console.log(`Deleting note with id: ${id}`);
+            await axios.delete(`http://localhost:3001/notes/${id}`);
             setNotes(notes.filter(note => note.id !== id));
+            console.log(`Deleted note with id: ${id}`);
         } catch (error) {
             console.error("Erro ao excluir bilhete:", error);
         }
@@ -61,6 +65,7 @@ export default function Bilhetes() {
                     placeholder="Escreva uma mensagem positiva..."
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
+                    required
                 ></textarea>
                 <button type="submit" className="azul">Adicionar bilhete</button>
             </form>
@@ -72,7 +77,7 @@ function Card({ note, onDelete }) {
     return (
         <div className="note">
             {note}
-            <button onClick={onDelete} className="delete-button">Excluir</button>
+            <button onClick={onDelete} className="delete-button">x</button>
         </div>
     );
 }

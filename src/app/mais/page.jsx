@@ -8,6 +8,7 @@ export default function Mais(){
             <Link href="/quiz">Quiz</Link>
             <Link href="/inspiracoes">Inspirações</Link>
             <Link href="/sobrenos">Sobre nós</Link>
+            <Link href="/bilhetes">Deixe uma mensagem positiva</Link>
             <Link href="https://chat.whatsapp.com/DuqSVuB3Tdg1U8IBmJWiJZ">Participe da nossa comunidade</Link>
         </div>
     );

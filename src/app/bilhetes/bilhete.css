@@ -46,3 +46,10 @@ textarea {
     border-radius: 10px;
     border: 2px solid #201261;
 }
+
+button {
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 32px;
+}
