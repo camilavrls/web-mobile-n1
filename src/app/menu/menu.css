@@ -1,9 +1,8 @@
 .menu {
     border-top-right-radius: 50px;
-    width: 20vw;
+    width: 15vw;
     height: 100vh;
     background-color: #201261;
-    margin-left: 0px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -20,15 +19,3 @@ img{
     width: 30px;
     height: 30px;
 }
-
-@media (max-width: 768px) {
-    .menu {
-      width: 100%; /* Make menu full width on small screens */
-      height: auto; /* Remove fixed height */
-      flex-direction: row; /* Change layout to horizontal */
-      align-items: flex-start; /* Align items at the top */
-    }
-    
-    nav {
-    }
-  }

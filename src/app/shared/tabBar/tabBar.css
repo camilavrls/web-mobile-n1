@@ -1,0 +1,28 @@
+.container-tabbar {
+    background-color: #FFE5E7;
+    border-radius: 12px;
+    width: calc(100% - 32px);
+    margin: 0 auto; 
+    padding: 0 8px; 
+    display: flex;
+    justify-content: space-around;
+    position: fixed; 
+    bottom: 16px; 
+    left: 0; 
+    right: 0;
+}
+
+.icone{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.icone > a > p{
+    margin: 0px;
+    padding: 0px;
+}
+.icone > img {
+    width: 25px;
+    height: 25px;
+}

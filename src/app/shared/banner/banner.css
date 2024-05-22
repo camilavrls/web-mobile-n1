@@ -1,0 +1,24 @@
+.container-banner{
+    padding: 8px;
+}
+
+.content {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.texto{
+    color: #201261;
+    margin: 8px;
+}
+
+.text{
+    text-align: center;
+}
+
+.text h1 {
+    color: #EF6565;
+    font-weight: normal;
+    margin-bottom: 10px; 
+}
