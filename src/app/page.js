@@ -1,5 +1,4 @@
 import React from "react";
-import IconButton from "@mui/material/IconButton";
 import Banner from "./shared/banner/banner";
 
 export default function App() {
