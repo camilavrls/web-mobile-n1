@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Botao from "../shared/button/button";
 import "./bilhete.css";
 
 export default function Bilhetes() {
@@ -16,9 +14,13 @@ export default function Bilhetes() {
     const fetchNotes = async () => {
         try {
             console.log("Fetching notes...");
-            const response = await axios.get("http://localhost:3001/notes");
-            console.log("Fetched notes:", response.data);
-            setNotes(response.data);
+            const response = await fetch("http://localhost:3001/notes");
+            if (!response.ok) {
+                throw new Error("Erro ao buscar os bilhetes");
+            }
+            const data = await response.json();
+            console.log("Fetched notes:", data);
+            setNotes(data);
         } catch (error) {
             console.error("Erro ao buscar os bilhetes:", error);
         }
@@ -27,9 +29,19 @@ export default function Bilhetes() {
     const addNote = async () => {
         try {
             console.log("Adding note:", newNote);
-            const response = await axios.post("http://localhost:3001/notes", { note: newNote });
-            console.log("Added note:", response.data);
-            setNotes([...notes, response.data]);
+            const response = await fetch("http://localhost:3001/notes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ note: newNote }),
+            });
+            if (!response.ok) {
+                throw new Error("Erro ao adicionar bilhete");
+            }
+            const data = await response.json();
+            console.log("Added note:", data);
+            setNotes([...notes, data]);
             setNewNote("");
         } catch (error) {
             console.error("Erro ao adicionar bilhete:", error);
@@ -39,7 +51,12 @@ export default function Bilhetes() {
     const deleteNote = async (id) => {
         try {
             console.log(`Deleting note with id: ${id}`);
-            await axios.delete(`http://localhost:3001/notes/${id}`);
+            const response = await fetch(`http://localhost:3001/notes/${id}`, {
+                method: "DELETE",
+            });
+            if (!response.ok) {
+                throw new Error("Erro ao excluir bilhete");
+            }
             setNotes(notes.filter(note => note.id !== id));
             console.log(`Deleted note with id: ${id}`);
         } catch (error) {
