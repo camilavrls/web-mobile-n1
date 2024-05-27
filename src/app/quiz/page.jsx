@@ -39,7 +39,7 @@ export default function Quiz() {
   return (
     <div className="main-container">
       <div className="quiz-container">
-        <h1>Quiz de Ciência da Computação</h1>
+        <h1>QUIZ</h1>
         {quizData.length > 0 ? (
           <div>
             {quizData.map((questionData, index) => (
@@ -52,11 +52,11 @@ export default function Quiz() {
                     <button
                       key={`incorrect_${i}`}
                       onClick={() => handleAnswer(index, i, false)}
-                      className={
+                      className={`quiz-button ${
                         answeredQuestions[index]?.answerIndex === i
                           ? "incorrect"
                           : ""
-                      }
+                      }`}
                       disabled={answeredQuestions.hasOwnProperty(index)}
                     >
                       {incorrectAnswer}
@@ -65,11 +65,11 @@ export default function Quiz() {
                   <button
                     key={`correct_${index}`}
                     onClick={() => handleAnswer(index, 'correct', true)}
-                    className={
+                    className={`quiz-button ${
                       answeredQuestions[index]?.answerIndex === 'correct'
                         ? "correct"
                         : ""
-                    }
+                    }`}
                     disabled={answeredQuestions.hasOwnProperty(index)}
                   >
                     {questionData.correct_answer}
