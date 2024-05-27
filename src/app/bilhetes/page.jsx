@@ -14,7 +14,7 @@ export default function Bilhetes() {
     const fetchNotes = async () => {
         try {
             console.log("Fetching notes...");
-            const response = await fetch("http://localhost:3001/notes");
+            const response = await fetch("http://localhost:8000/notes");
             if (!response.ok) {
                 throw new Error("Erro ao buscar os bilhetes");
             }
@@ -29,7 +29,7 @@ export default function Bilhetes() {
     const addNote = async () => {
         try {
             console.log("Adding note:", newNote);
-            const response = await fetch("http://localhost:3001/notes", {
+            const response = await fetch("http://localhost:8000/notes", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export default function Bilhetes() {
     const deleteNote = async (id) => {
         try {
             console.log(`Deleting note with id: ${id}`);
-            const response = await fetch(`http://localhost:3001/notes/${id}`, {
+            const response = await fetch(`http://localhost:8000/notes/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) {
