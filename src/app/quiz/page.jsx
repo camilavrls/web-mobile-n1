@@ -3,35 +3,35 @@ import React, { useEffect, useState } from "react";
 import "./quiz.css";
 
 export default function Quiz() {
-  const [quizData, setQuizData] = useState([]);
-  const [answeredQuestions, setAnsweredQuestions] = useState({});
+  const [dadosQuiz, setDadosQuiz] = useState([]);
+  const [questoesRespondidas, setQuestoesRespondidas] = useState({});
 
   useEffect(() => {
-    async function fetchData() {
+    async function buscarDados() {
       try {
         const response = await fetch(
           "https://opentdb.com/api.php?amount=7&category=18&type=multiple"
         );
         const jsonData = await response.json();
         if (jsonData.results) {
-          setQuizData(jsonData.results);
+          setDadosQuiz(jsonData.results);
         } else {
-          console.error("No results found in API response");
+          console.error("Nenhum resultado encontrado na resposta da API");
         }
       } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
       }
     }
 
-    fetchData();
+    buscarDados();
   }, []);
 
-  const handleAnswer = (questionIndex, answerIndex, isCorrect) => {
-    setAnsweredQuestions((prev) => ({
+  const lidarComResposta = (indiceQuestao, indiceResposta, estaCorreta) => {
+    setQuestoesRespondidas((prev) => ({
       ...prev,
-      [questionIndex]: {
-        answerIndex,
-        isCorrect,
+      [indiceQuestao]: {
+        indiceResposta,
+        estaCorreta,
       },
     }));
   };
@@ -40,39 +40,39 @@ export default function Quiz() {
     <div className="main-container">
       <div className="quiz-container">
         <h1>QUIZ</h1>
-        {quizData.length > 0 ? (
+        {dadosQuiz.length > 0 ? (
           <div>
-            {quizData.map((questionData, index) => (
-              <div key={`question_${index}`}>
-                <h2>Questão {index + 1}:</h2>
-                <p>{questionData.question}</p>
+            {dadosQuiz.map((dadosQuestao, indice) => (
+              <div key={`questao_${indice}`}>
+                <h2>Questão {indice + 1}:</h2>
+                <p>{dadosQuestao.question}</p>
                 <h3>Respostas:</h3>
                 <div className="answers">
-                  {questionData.incorrect_answers.map((incorrectAnswer, i) => (
+                  {dadosQuestao.incorrect_answers.map((respostaIncorreta, i) => (
                     <button
-                      key={`incorrect_${i}`}
-                      onClick={() => handleAnswer(index, i, false)}
+                      key={`incorreta_${i}`}
+                      onClick={() => lidarComResposta(indice, i, false)}
                       className={`quiz-button ${
-                        answeredQuestions[index]?.answerIndex === i
+                        questoesRespondidas[indice]?.indiceResposta === i
                           ? "incorrect"
                           : ""
                       }`}
-                      disabled={answeredQuestions.hasOwnProperty(index)}
+                      disabled={questoesRespondidas.hasOwnProperty(indice)}
                     >
-                      {incorrectAnswer}
+                      {respostaIncorreta}
                     </button>
                   ))}
                   <button
-                    key={`correct_${index}`}
-                    onClick={() => handleAnswer(index, 'correct', true)}
+                    key={`correta_${indice}`}
+                    onClick={() => lidarComResposta(indice, 'correct', true)}
                     className={`quiz-button ${
-                      answeredQuestions[index]?.answerIndex === 'correct'
+                      questoesRespondidas[indice]?.indiceResposta === 'correct'
                         ? "correct"
                         : ""
                     }`}
-                    disabled={answeredQuestions.hasOwnProperty(index)}
+                    disabled={questoesRespondidas.hasOwnProperty(indice)}
                   >
-                    {questionData.correct_answer}
+                    {dadosQuestao.correct_answer}
                   </button>
                 </div>
               </div>

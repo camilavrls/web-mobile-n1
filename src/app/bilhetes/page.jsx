@@ -4,61 +4,61 @@ import React, { useState, useEffect } from "react";
 import "./bilhete.css";
 
 export default function Bilhetes() {
-    const [notes, setNotes] = useState([]);
-    const [newNote, setNewNote] = useState("");
+    const [bilhetes, setBilhetes] = useState([]);
+    const [novoBilhete, setNovoBilhete] = useState("");
 
     useEffect(() => {
-        fetchNotes();
+        buscarBilhetes();
     }, []);
 
-    const fetchNotes = async () => {
+    const buscarBilhetes = async () => {
         try {
-            console.log("Fetching notes...");
+            console.log("Buscando bilhetes...");
             const response = await fetch("http://localhost:8000/notes");
             if (!response.ok) {
                 throw new Error("Erro ao buscar os bilhetes");
             }
             const data = await response.json();
-            console.log("Fetched notes:", data);
-            setNotes(data);
+            console.log("Bilhetes buscados:", data);
+            setBilhetes(data);
         } catch (error) {
             console.error("Erro ao buscar os bilhetes:", error);
         }
     };
 
-    const addNote = async () => {
+    const adicionarBilhete = async () => {
         try {
-            console.log("Adding note:", newNote);
+            console.log("Adicionando bilhete:", novoBilhete);
             const response = await fetch("http://localhost:8000/notes", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ note: newNote }),
+                body: JSON.stringify({ note: novoBilhete }),
             });
             if (!response.ok) {
                 throw new Error("Erro ao adicionar bilhete");
             }
             const data = await response.json();
-            console.log("Added note:", data);
-            setNotes([...notes, data]);
-            setNewNote("");
+            console.log("Bilhete adicionado:", data);
+            setBilhetes([...bilhetes, data]);
+            setNovoBilhete("");
         } catch (error) {
             console.error("Erro ao adicionar bilhete:", error);
         }
     };
 
-    const deleteNote = async (id) => {
+    const excluirBilhete = async (id) => {
         try {
-            console.log(`Deleting note with id: ${id}`);
+            console.log(`Excluindo bilhete com id: ${id}`);
             const response = await fetch(`http://localhost:8000/notes/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) {
                 throw new Error("Erro ao excluir bilhete");
             }
-            setNotes(notes.filter(note => note.id !== id));
-            console.log(`Deleted note with id: ${id}`);
+            setBilhetes(bilhetes.filter(bilhete => bilhete.id !== id));
+            console.log(`Bilhete excluído com id: ${id}`);
         } catch (error) {
             console.error("Erro ao excluir bilhete:", error);
         }
@@ -68,20 +68,20 @@ export default function Bilhetes() {
         <div>
             <h1>BILHETES POSITIVOS</h1>
             <div className="note-container">
-                {notes.map(note => (
-                    <Card key={note.id} note={note.note} onDelete={() => deleteNote(note.id)} />
+                {bilhetes.map(bilhete => (
+                    <Cartao key={bilhete.id} bilhete={bilhete.note} onDelete={() => excluirBilhete(bilhete.id)} />
                 ))}
             </div>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    addNote();
+                    adicionarBilhete();
                 }}
             >
                 <textarea
                     placeholder="Escreva uma mensagem positiva..."
-                    value={newNote}
-                    onChange={(e) => setNewNote(e.target.value)}
+                    value={novoBilhete}
+                    onChange={(e) => setNovoBilhete(e.target.value)}
                     required
                 ></textarea>
                 <button type="submit" className="azul">Adicionar bilhete</button>
@@ -90,10 +90,10 @@ export default function Bilhetes() {
     );
 }
 
-function Card({ note, onDelete }) {
+function Cartao({ bilhete, onDelete }) {
     return (
         <div className="note">
-            {note}
+            {bilhete}
             <button onClick={onDelete} className="delete-button">x</button>
         </div>
     );
